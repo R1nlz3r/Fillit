@@ -6,7 +6,7 @@
 #    By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/10 16:36:36 by mapandel          #+#    #+#              #
-#    Updated: 2017/01/10 17:41:26 by mapandel         ###   ########.fr        #
+#    Updated: 2017/01/10 17:51:52 by vlanduyt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFLAGS = 	-Wall -Wextra -Werror
 
 #			Sources
 
-SRC =		fillit/main.c \
+SRC =		sources/main.c \
 
 OBJ =		$(SRC:.c=.o)
 
