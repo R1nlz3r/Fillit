@@ -3,4 +3,5 @@
 .nfs.*
 *.swp
 *.o
+*.txt
 fillit
