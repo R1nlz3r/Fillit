@@ -6,7 +6,7 @@
 #    By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/10 16:36:36 by mapandel          #+#    #+#              #
-#    Updated: 2017/01/10 17:51:52 by vlanduyt         ###   ########.fr        #
+#    Updated: 2017/01/12 15:17:17 by mapandel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ CFLAGS = 	-Wall -Wextra -Werror
 #			Sources
 
 SRC =		sources/main.c \
+			sources/split_tetriminos.c \
 
 OBJ =		$(SRC:.c=.o)
 
