@@ -6,7 +6,7 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 17:25:51 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/01/12 22:39:39 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/01/15 01:32:00 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static t_fillit		*ft_init_fillit(t_fillit *fillit, char **argv)
 		|| (fillit->fd = open(argv[1], 2)) == -1)
 		exit(-1);
 	fillit->tetri = NULL;
+	fillit->tetristart = NULL;
 	fillit->countlines = 0;
 	fillit->counttetri = 0;
 	return (fillit);
