@@ -6,7 +6,7 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 19:41:48 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/01/15 01:54:14 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/01/15 02:18:06 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,6 @@ void	ft_split_tetriminos(t_fillit *fillit)
 		else
 			exit (-1);
 	}
-	ft_putchar('1');
-//	fillit->tetristart;
-	ft_putchar('2');
-	ft_putendl(fillit->tetristart->piece[0]);
-	ft_putchar('3');
-	fillit->tetristart = fillit->tetristart->next;
-	ft_putchar('4');
-	ft_putnbr((int)fillit->tetristart);
-	ft_putendl(fillit->tetristart->piece[0]);
-	ft_putchar('5');
 	//go check si les tériminos sont bien des tétriminos
 	//+ si tous les caractères sont bien formatés
 	//(ça pourrait être utile)
