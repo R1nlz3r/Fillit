@@ -6,7 +6,7 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 17:17:22 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/01/12 15:14:14 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/01/15 01:50:36 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct				s_fillit
 {
 	int						fd;
 	t_fillit_tetri			*tetri;
+	t_fillit_tetri			*tetristart;
 	char					*line;
 	int						countlines;
 	int						counttetri;
