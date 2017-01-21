@@ -6,7 +6,7 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 19:41:48 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/01/15 02:18:06 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/01/21 19:18:09 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,18 @@ void	ft_split_tetriminos(t_fillit *fillit)
 			&& fillit->counttetri < 26)
 		{
 			if (fillit->countlines == 0
-				&& (!(fillit->tetri = ft_memalloc(sizeof(t_fillit_tetri*)))
-				|| !(fillit->tetri->piece = ft_memalloc(sizeof(char**) * 4))))
+				&& !(fillit->tetri->piece = ft_memalloc(sizeof(char**) * 4)))
 				exit (-1);
 			fillit->tetri->piece[fillit->countlines] = ft_strdup(fillit->line);
 			++fillit->countlines;
-			if (!fillit->tetristart)
-				fillit->tetristart = fillit->tetri;
 		}
 		else if (fillit->countlines == 4 && !fillit->line[0])
 		{
 			fillit->countlines = 0;
+			if (!fillit->tetristart)
+				fillit->tetristart = fillit->tetri;
+			if (!(fillit->tetri->next = ft_memalloc(sizeof(t_fillit_tetri*))))
+				exit (-1);
 			fillit->tetri = fillit->tetri->next;
 			++fillit->counttetri;
 		}
