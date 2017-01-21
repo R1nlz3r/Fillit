@@ -6,7 +6,7 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 17:25:51 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/01/21 19:15:33 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/01/21 19:21:13 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static t_fillit		*ft_init_fillit(t_fillit *fillit, char **argv)
 {
 	if (!(fillit = ft_memalloc(sizeof(t_fillit)))
 		|| (fillit->fd = open(argv[1], 2)) == -1
-		|| !(fillit->tetri = ft_memalloc(sizeof(t_fillit_tetri))))
+		|| !(fillit->tetri = ft_memalloc(sizeof(t_fillit_tetri*))))
 		exit(-1);
 	fillit->tetristart = NULL;
 	fillit->countlines = 0;
