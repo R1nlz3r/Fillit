@@ -6,7 +6,7 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 19:41:48 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/01/27 06:18:16 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/01/27 09:43:37 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,28 @@
 static void		ft_check_carac_tetriminos(t_fillit *fillit)
 {
 	fillit->counttetri = 0;
-	while (fillit->counttetri < 26)
+	while (fillit->counttetri < 26 && fillit->tetri[fillit->counttetri]
+		[fillit->countlines][fillit->countcaracs])
 	{
 		fillit->countlines = 0;
 		fillit->countsharps = 0;
 		while (fillit->countlines < 4)
 		{
 			fillit->countcaracs = 0;
-			while (fillit->countcaracs < 4 && fillit->tetri[fillit->counttetri]
-				[fillit->countlines][fillit->countcaracs])
+			while (fillit->countcaracs < 4)
 			{
 				if (fillit->tetri[fillit->counttetri][fillit->countlines]
 					[fillit->countcaracs] == '#')
 					++fillit->countsharps;
-				if (!(fillit->tetri[fillit->counttetri][fillit->countlines]
-					[fillit->countcaracs] == '#'
-					|| fillit->tetri[fillit->counttetri][fillit->countlines]
+				else if (!(fillit->tetri[fillit->counttetri][fillit->countlines]
 					[fillit->countcaracs] == '.') || fillit->countsharps > 4)
 						exit (-1);
 				++fillit->countcaracs;
 			}
 			++fillit->countlines;
 		}
+		if (fillit->countsharps < 4)
+			exit (-1);
 		++fillit->counttetri;
 	}
 	//Maintenant go check si les dieses sont bien collés(serrés) entre eux
