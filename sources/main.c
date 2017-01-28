@@ -6,38 +6,38 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 17:25:51 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/01/27 05:45:22 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/01/28 03:18:25 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static t_fillit		*ft_init_fillit(t_fillit *fillit, char **argv)
+static t_fillit		*ft_init_fillit(t_fillit *f, char **argv)
 {
-	if (!(fillit = ft_memalloc(sizeof(t_fillit)))
-		|| (fillit->fd = open(argv[1], 2)) == -1
-		|| read(fillit->fd, 0, 0) || !(fillit->line = ft_strnew(5)))
+	if (!(f = ft_memalloc(sizeof(t_fillit)))
+		|| (f->fd = open(argv[1], 2)) == -1
+		|| read(f->fd, 0, 0) || !(f->buf = ft_strnew(5)))
 		exit(-1);
-	ft_bzero(fillit->tetri, sizeof(fillit->tetri));
-	fillit->lenline = 0;
-	fillit->counttetri = 0;
-	fillit->countlines = 0;
-	fillit->countcaracs = 0;
-	fillit->countsharps = 0;
-	return (fillit);
+	ft_bzero(f->tetri, sizeof(f->tetri));
+	f->lenline = 0;
+	f->tet = 0;
+	f->line = 0;
+	f->carac = 0;
+	f->sharp = 0;
+	return (f);
 }
 
 int		main(int argc, char **argv)
 {
-	t_fillit	*fillit;
+	t_fillit	*f;
 
-	fillit = NULL;
+	f = NULL;
 	if (argc != 2)
 	{
 		ft_putendl("usage: fillit target_file");
 		exit(-1);
 	}
-	fillit = ft_init_fillit(fillit, argv);
-	ft_split_tetriminos(fillit);
+	f = ft_init_fillit(f, argv);
+	ft_split_tetriminos(f);
 	return (0);
 }
