@@ -6,7 +6,7 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 17:17:22 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/01/28 03:10:35 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/01/28 04:36:20 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct				s_fillit
 	int						sharp;
 }							t_fillit;
 
+void	ft_exit(void);
 void	ft_split_tetriminos(t_fillit *fillit);
 
 #endif
