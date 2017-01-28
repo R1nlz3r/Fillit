@@ -6,18 +6,24 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 17:25:51 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/01/28 03:18:25 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/01/28 04:38:42 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+void	ft_exit(void)
+{
+	ft_putendl("error");
+	exit (-1);
+}
 
 static t_fillit		*ft_init_fillit(t_fillit *f, char **argv)
 {
 	if (!(f = ft_memalloc(sizeof(t_fillit)))
 		|| (f->fd = open(argv[1], 2)) == -1
 		|| read(f->fd, 0, 0) || !(f->buf = ft_strnew(5)))
-		exit(-1);
+		ft_exit();
 	ft_bzero(f->tetri, sizeof(f->tetri));
 	f->lenline = 0;
 	f->tet = 0;
