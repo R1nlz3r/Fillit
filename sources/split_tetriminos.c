@@ -6,7 +6,7 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 19:41:48 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/01/28 03:35:23 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/01/28 04:39:39 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void		ft_check_valid_tetriminos(t_fillit *f)
 					|| (f->line != 0 && (f->tetri[f->tet][f->line - 1][f->carac] == '#'))
 					|| (f->line != 4 && (f->tetri[f->tet][f->line + 1][f->carac] == '#'))
 					|| (f->carac != 4 && (f->tetri[f->tet][f->line][f->carac + 1] == '#'))))
-						exit (-1);
+						ft_exit();
 				++f->carac;
 			}
 			++f->line;
@@ -53,13 +53,13 @@ static void		ft_check_carac_tetriminos(t_fillit *f)
 					++f->sharp;
 				else if (!(f->tetri[f->tet][f->line][f->carac] == '.')
 					|| f->sharp > 4)
-					exit (-1);
+					ft_exit();
 				++f->carac;
 			}
 			++f->line;
 		}
 		if (f->sharp < 4)
-			exit (-1);
+			ft_exit();
 		++f->tet;
 	}
 	ft_check_valid_tetriminos(f);
@@ -84,9 +84,9 @@ void	ft_split_tetriminos(t_fillit *f)
 		else if (!f->lenline)
 			break ;
 		else
-			exit (-1);
+			ft_exit();
 	}
 	if (f->line != 4)
-		exit (-1);
+		ft_exit();
 	ft_check_carac_tetriminos(f);
 }
