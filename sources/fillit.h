@@ -6,7 +6,7 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 17:17:22 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/01/27 05:45:07 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/01/28 03:10:35 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@
 typedef struct				s_fillit
 {
 	int						fd;
-	char					*line;
+	char					*buf;
 	int						lenline;
 	char					tetri[26][4][4];
-	int						counttetri;
-	int						countlines;
-	int						countcaracs;
-	int						countsharps;
+	int						tet;
+	int						line;
+	int						carac;
+	int						sharp;
 }							t_fillit;
 
 void	ft_split_tetriminos(t_fillit *fillit);
