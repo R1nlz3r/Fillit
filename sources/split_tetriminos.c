@@ -6,7 +6,7 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 19:41:48 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/01/29 10:19:27 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/01/31 00:35:23 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void		ft_find_pos_tetriminos(t_fillit *f)
 {
 	f->tet = 0;
-	while (f->tet < 26 && f->tetri[f->tet][f->line][f->carac])
+	while (f->tet < 26 && f->tetri[f->tet][0][0])
 	{
 		f->line = 0;
 		while (f->line < 4)
@@ -41,7 +41,7 @@ static void		ft_find_pos_tetriminos(t_fillit *f)
 static void		ft_check_valid_tetriminos(t_fillit *f)
 {
 	f->tet = 0;
-	while (f->tet < 26 && f->tetri[f->tet][f->line][f->carac])
+	while (f->tet < 26 && f->tetri[f->tet][0][0])
 	{
 		f->line = 0;
 		while (f->line < 4)
@@ -67,7 +67,7 @@ static void		ft_check_valid_tetriminos(t_fillit *f)
 static void		ft_check_carac_tetriminos(t_fillit *f)
 {
 	f->tet = 0;
-	while (f->tet < 26 && f->tetri[f->tet][f->line][f->carac])
+	while (f->tet < 26 && f->tetri[f->tet][0][0])
 	{
 		f->line = 0;
 		f->sharp = 0;
