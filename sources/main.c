@@ -6,7 +6,7 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 17:25:51 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/01/29 10:20:07 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/01/30 11:27:59 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,11 @@ static t_fillit		*ft_init_fillit(t_fillit *f, char **argv)
 	f->line = 0;
 	f->carac = 0;
 	f->sharp = 0;
-	f->mapsize = 2;
 	f->map = NULL;
+	f->mapsize = 2;
+	f->mapx = 0;
+	f->mapy = 0;
+	f->booltetonmap = 0;
 	return (f);
 }
 
