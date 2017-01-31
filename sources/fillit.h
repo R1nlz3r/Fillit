@@ -6,7 +6,7 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 17:17:22 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/01/29 10:14:39 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/01/30 11:10:29 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ typedef struct				s_fillit
 	int						carac;
 	int						sharp;
 	int						mapsize;
+	int						mapx;
+	int						mapy;
 	char					**map;
+	int						booltetonmap;
 }							t_fillit;
 
 void	ft_find_solution(t_fillit *f);
