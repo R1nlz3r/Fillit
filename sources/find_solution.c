@@ -6,12 +6,11 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 05:28:22 by mapandel          #+#    #+#             */
-/*   Updated: 2017/01/31 12:02:31 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/02/01 07:38:41 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 static void		ft_put_on_map(t_fillit *f)
 {
