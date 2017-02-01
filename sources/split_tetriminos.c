@@ -6,7 +6,7 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 19:41:48 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/01/31 00:35:23 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/02/01 09:18:25 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,45 @@ static void		ft_find_pos_tetriminos(t_fillit *f)
 	ft_find_solution(f);
 }
 
+static void		ft_check_valid_tetriminos_2(t_fillit *f)
+{
+	int		tmp;
+
+	tmp = f->sharp;
+	if (f->tetri[f->tet][f->line][f->carac] == '#')
+	{
+		if (f->carac != 0 && (f->tetri[f->tet][f->line][f->carac - 1] == '#'))
+			++f->sharp;
+		if (f->line != 0 && (f->tetri[f->tet][f->line - 1][f->carac] == '#'))
+			++f->sharp;
+		if (f->line != 4 && (f->tetri[f->tet][f->line + 1][f->carac] == '#'))
+			++f->sharp;
+		if (f->carac != 4 && (f->tetri[f->tet][f->line][f->carac + 1] == '#'))
+			++f->sharp;
+		if (tmp == f->sharp)
+			ft_exit();
+	}
+}
+
 static void		ft_check_valid_tetriminos(t_fillit *f)
 {
 	f->tet = 0;
 	while (f->tet < 26 && f->tetri[f->tet][0][0])
 	{
 		f->line = 0;
+		f->sharp = 0;
 		while (f->line < 4)
 		{
 			f->carac = 0;
 			while (f->carac < 4)
 			{
-				if (f->tetri[f->tet][f->line][f->carac] == '#'
-					&& !((f->carac != 0 && (f->tetri[f->tet][f->line][f->carac - 1] == '#'))
-					|| (f->line != 0 && (f->tetri[f->tet][f->line - 1][f->carac] == '#'))
-					|| (f->line != 4 && (f->tetri[f->tet][f->line + 1][f->carac] == '#'))
-					|| (f->carac != 4 && (f->tetri[f->tet][f->line][f->carac + 1] == '#'))))
-						ft_exit();
+				ft_check_valid_tetriminos_2(f);
 				++f->carac;
 			}
 			++f->line;
 		}
+		if (f->sharp < 5)
+			ft_exit();
 		++f->tet;
 	}
 	ft_find_pos_tetriminos(f);
@@ -78,14 +96,13 @@ static void		ft_check_carac_tetriminos(t_fillit *f)
 			{
 				if (f->tetri[f->tet][f->line][f->carac] == '#')
 					++f->sharp;
-				else if (!(f->tetri[f->tet][f->line][f->carac] == '.')
-					|| f->sharp > 4)
+				else if (!(f->tetri[f->tet][f->line][f->carac] == '.'))
 					ft_exit();
 				++f->carac;
 			}
 			++f->line;
 		}
-		if (f->sharp < 4)
+		if (f->sharp != 4)
 			ft_exit();
 		++f->tet;
 	}
