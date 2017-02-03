@@ -6,7 +6,7 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 19:41:48 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/02/03 11:35:56 by vlanduyt         ###   ########.fr       */
+/*   Updated: 2017/02/03 13:06:51 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void		ft_find_pos_tetriminos(t_fillit *f)
 		}
 		++f->tet;
 	}
-	ft_find_solution(f);
 }
 
 static void		ft_check_valid_tetriminos_2(t_fillit *f)
