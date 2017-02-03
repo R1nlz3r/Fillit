@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 05:28:22 by mapandel          #+#    #+#             */
-/*   Updated: 2017/02/03 11:51:53 by vlanduyt         ###   ########.fr       */
+/*   Updated: 2017/02/03 13:22:19 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ static int		ft_try_to_put_on_map(t_fillit *f)
 
 static int		ft_iter_on_map(t_fillit *f)
 {
-	f->tet = 0;
 	while (f->tet < 26 && f->tetri[f->tet][0][0])
 	{
 		if (f->mapx[f->tet] == f->mapsize)
@@ -103,7 +102,7 @@ static int		ft_iter_on_map(t_fillit *f)
 	return (1);
 }
 
-static int		ft_init_map(t_fillit *f)
+int				ft_init_map(t_fillit *f)
 {
 	int		i;
 
@@ -117,17 +116,6 @@ static int		ft_init_map(t_fillit *f)
 		f->map[i] = ft_strfill(f->map[i], '.', f->mapsize);
 		++i;
 	}
+	f->tet = 0;
 	return (ft_iter_on_map(f));
-}
-
-void			ft_find_solution(t_fillit *f)
-{
-	while (!(ft_init_map(f)))
-	{
-		++f->mapsize;
-		ft_tabfill(f->mapx, 0, 26);
-		ft_tabfill(f->mapy, 0, 26);
-	}
-	ft_putmap(f->map, f->mapsize);
-	exit(0);
 }
