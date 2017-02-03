@@ -6,7 +6,7 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 17:25:51 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/01/30 11:27:59 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/02/03 00:24:16 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static t_fillit		*ft_init_fillit(t_fillit *f, char **argv)
 	ft_bzero(f->tetri, sizeof(f->tetri));
 	ft_tabfill(f->postetrix, 4, 26);
 	ft_tabfill(f->postetriy, 4, 26);
+	ft_tabfill(f->mapx, 0, 26);
+	ft_tabfill(f->mapy, 0, 26);
 	f->lenline = 0;
 	f->tet = 0;
 	f->line = 0;
@@ -34,8 +36,6 @@ static t_fillit		*ft_init_fillit(t_fillit *f, char **argv)
 	f->sharp = 0;
 	f->map = NULL;
 	f->mapsize = 2;
-	f->mapx = 0;
-	f->mapy = 0;
 	f->booltetonmap = 0;
 	return (f);
 }
