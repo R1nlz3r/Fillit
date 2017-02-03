@@ -6,7 +6,7 @@
 #    By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/10 16:36:36 by mapandel          #+#    #+#              #
-#    Updated: 2017/01/29 05:13:34 by mapandel         ###   ########.fr        #
+#    Updated: 2017/02/03 03:33:09 by mapandel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,4 +76,4 @@ clean:
 
 fclean: clean
 	@echo "$(RED)--::Executable and Library Delection::--$(DEF)"
-	@rm -rf $(NAME)
+	@rm -rf $(NAME) $(LIBPATH)
