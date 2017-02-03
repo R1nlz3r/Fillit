@@ -6,16 +6,16 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 17:25:51 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/02/03 00:24:16 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/02/03 11:37:27 by vlanduyt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_exit(void)
+void				ft_exit(void)
 {
 	ft_putendl("error");
-	exit (-1);
+	exit(-1);
 }
 
 static t_fillit		*ft_init_fillit(t_fillit *f, char **argv)
@@ -40,7 +40,7 @@ static t_fillit		*ft_init_fillit(t_fillit *f, char **argv)
 	return (f);
 }
 
-int		main(int argc, char **argv)
+int					main(int argc, char **argv)
 {
 	t_fillit	*f;
 

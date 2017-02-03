@@ -6,7 +6,7 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 19:41:48 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/02/01 09:18:25 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/02/03 11:35:56 by vlanduyt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ static void		ft_check_carac_tetriminos(t_fillit *f)
 	ft_check_valid_tetriminos(f);
 }
 
-void	ft_split_tetriminos(t_fillit *f)
+void			ft_split_tetriminos(t_fillit *f)
 {
 	while (1)
 	{

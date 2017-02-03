@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 05:28:22 by mapandel          #+#    #+#             */
-/*   Updated: 2017/02/03 03:30:08 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/02/03 11:51:53 by vlanduyt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ static void		ft_put_on_map(t_fillit *f)
 		while (f->carac < 4)
 		{
 			if (f->tetri[f->tet][f->line][f->carac] == '#')
-				f->map[f->line + f->mapx[f->tet] - f->postetrix[f->tet]][f->carac + f->mapy[f->tet] - f->postetriy[f->tet]] = 'A' + f->tet;
+				f->map[f->line + f->mapx[f->tet]
+				- f->postetrix[f->tet]][f->carac + f->mapy[f->tet]
+				- f->postetriy[f->tet]] = 'A' + f->tet;
 			++f->carac;
 		}
 		++f->line;
@@ -57,9 +59,11 @@ static int		ft_try_to_put_on_map(t_fillit *f)
 		while (f->carac < 4)
 		{
 			if (f->tetri[f->tet][f->line][f->carac] == '#'
-				&& (f->line - f->postetrix[f->tet] + f->mapx[f->tet] >= f->mapsize
-				|| f->carac - f->postetriy[f->tet] + f->mapy[f->tet] >= f->mapsize
-				|| f->map[f->line - f->postetrix[f->tet] + f->mapx[f->tet]][f->carac - f->postetriy[f->tet] + f->mapy[f->tet]] != '.'))
+				&& (f->line - f->postetrix[f->tet] + f->mapx[f->tet]
+				>= f->mapsize || f->carac - f->postetriy[f->tet]
+				+ f->mapy[f->tet] >= f->mapsize || f->map[f->line
+				- f->postetrix[f->tet] + f->mapx[f->tet]][f->carac
+				- f->postetriy[f->tet] + f->mapy[f->tet]] != '.'))
 				return (0);
 			++f->carac;
 		}
@@ -90,7 +94,7 @@ static int		ft_iter_on_map(t_fillit *f)
 				++f->mapx[f->tet];
 		}
 		if (!f->booltetonmap && !f->tet)
-			return(0);
+			return (0);
 		else if (!f->booltetonmap)
 			ft_del_on_map(f);
 		else
@@ -116,9 +120,9 @@ static int		ft_init_map(t_fillit *f)
 	return (ft_iter_on_map(f));
 }
 
-void	ft_find_solution(t_fillit *f)
+void			ft_find_solution(t_fillit *f)
 {
-	while(!(ft_init_map(f)))
+	while (!(ft_init_map(f)))
 	{
 		++f->mapsize;
 		ft_tabfill(f->mapx, 0, 26);
