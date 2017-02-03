@@ -6,7 +6,7 @@
 /*   By: vlanduyt <vlanduyt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 17:25:51 by vlanduyt          #+#    #+#             */
-/*   Updated: 2017/02/03 11:37:27 by vlanduyt         ###   ########.fr       */
+/*   Updated: 2017/02/03 13:18:18 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@ void				ft_exit(void)
 {
 	ft_putendl("error");
 	exit(-1);
+}
+
+static void			ft_find_solution(t_fillit *f)
+{
+	while (!(ft_init_map(f)))
+	{
+		++f->mapsize;
+		ft_tabfill(f->mapx, 0, 26);
+		ft_tabfill(f->mapy, 0, 26);
+	}
+	ft_putmap(f->map, f->mapsize);
+	exit(0);
 }
 
 static t_fillit		*ft_init_fillit(t_fillit *f, char **argv)
@@ -52,5 +64,6 @@ int					main(int argc, char **argv)
 	}
 	f = ft_init_fillit(f, argv);
 	ft_split_tetriminos(f);
+	ft_find_solution(f);
 	return (0);
 }
