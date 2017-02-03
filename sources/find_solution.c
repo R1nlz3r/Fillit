@@ -6,11 +6,31 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 05:28:22 by mapandel          #+#    #+#             */
-/*   Updated: 2017/02/01 07:38:41 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/02/03 03:30:08 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+static void		ft_del_on_map(t_fillit *f)
+{
+	int		x;
+	int		y;
+
+	--f->tet;
+	x = 0;
+	while (x < f->mapsize)
+	{
+		y = 0;
+		while (y < f->mapsize)
+		{
+			if (f->map[x][y] == f->tet + 'A')
+				f->map[x][y] = '.';
+			++y;
+		}
+		++x;
+	}
+}
 
 static void		ft_put_on_map(t_fillit *f)
 {
@@ -21,7 +41,7 @@ static void		ft_put_on_map(t_fillit *f)
 		while (f->carac < 4)
 		{
 			if (f->tetri[f->tet][f->line][f->carac] == '#')
-				f->map[f->line + f->mapx - f->postetrix[f->tet]][f->carac + f->mapy - f->postetriy[f->tet]] = 'A' + f->tet;
+				f->map[f->line + f->mapx[f->tet] - f->postetrix[f->tet]][f->carac + f->mapy[f->tet] - f->postetriy[f->tet]] = 'A' + f->tet;
 			++f->carac;
 		}
 		++f->line;
@@ -37,9 +57,9 @@ static int		ft_try_to_put_on_map(t_fillit *f)
 		while (f->carac < 4)
 		{
 			if (f->tetri[f->tet][f->line][f->carac] == '#'
-				&& (f->line - f->postetrix[f->tet] + f->mapx >= f->mapsize
-				|| f->carac - f->postetriy[f->tet] + f->mapy >= f->mapsize
-				|| f->map[f->line - f->postetrix[f->tet] + f->mapx][f->carac - f->postetriy[f->tet] + f->mapy] != '.'))
+				&& (f->line - f->postetrix[f->tet] + f->mapx[f->tet] >= f->mapsize
+				|| f->carac - f->postetriy[f->tet] + f->mapy[f->tet] >= f->mapsize
+				|| f->map[f->line - f->postetrix[f->tet] + f->mapx[f->tet]][f->carac - f->postetriy[f->tet] + f->mapy[f->tet]] != '.'))
 				return (0);
 			++f->carac;
 		}
@@ -54,21 +74,27 @@ static int		ft_iter_on_map(t_fillit *f)
 	f->tet = 0;
 	while (f->tet < 26 && f->tetri[f->tet][0][0])
 	{
-		f->mapx = 0;
+		if (f->mapx[f->tet] == f->mapsize)
+			f->mapx[f->tet] = 0;
 		f->booltetonmap = 0;
-		while (f->mapx < f->mapsize && !f->booltetonmap)
+		while (f->mapx[f->tet] < f->mapsize && !f->booltetonmap)
 		{
-			f->mapy = 0;
-			while (f->mapy < f->mapsize && !f->booltetonmap)
+			if (f->mapy[f->tet] == f->mapsize)
+				f->mapy[f->tet] = 0;
+			while (f->mapy[f->tet] < f->mapsize && !f->booltetonmap)
 			{
 				f->booltetonmap = ft_try_to_put_on_map(f);
-				++f->mapy;
+				++f->mapy[f->tet];
 			}
-			++f->mapx;
+			if (!f->booltetonmap || f->mapy[f->tet] == f->mapsize)
+				++f->mapx[f->tet];
 		}
-		if (!f->booltetonmap)
-			return (0);
-		++f->tet;
+		if (!f->booltetonmap && !f->tet)
+			return(0);
+		else if (!f->booltetonmap)
+			ft_del_on_map(f);
+		else
+			++f->tet;
 	}
 	return (1);
 }
@@ -93,6 +119,11 @@ static int		ft_init_map(t_fillit *f)
 void	ft_find_solution(t_fillit *f)
 {
 	while(!(ft_init_map(f)))
+	{
 		++f->mapsize;
+		ft_tabfill(f->mapx, 0, 26);
+		ft_tabfill(f->mapy, 0, 26);
+	}
 	ft_putmap(f->map, f->mapsize);
+	exit(0);
 }
